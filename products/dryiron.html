@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Facilities</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* Search box */
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            margin: 20px auto;
+            display: block;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        /* Card */
+        .tv-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            transition: 0.3s ease;
+        }
+
+        .tv-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Image fix */
+        .img-box {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f7f7f7;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Price styles */
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e7e34;
+            margin-top: 8px;
+        }
+
+        .installment {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo-area">
+            <img src="../Safty.jpg" style="border-radius: 10px;" alt="Safteey Credit Logo">
+            <h1>Iron Facilities</h1>
+        </div>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../facilities.html">Facilities</a>
+        </nav>
+    </div>
+</header>
+
+<section class="container tv-section">
+    <h2>Available Irons</h2>
+    <p class="subtitle">Efficient & durable irons for home and office use</p>
+
+    <!-- SEARCH -->
+    <input type="text" id="searchInput" class="search-box"
+        placeholder="Search iron (Dry, Steam, 1000W, Kanvox...)">
+
+    <div class="tv-grid">
+
+        <!-- DRY IRON SW 609 -->
+        <div class="tv-card">
+            <div class="img-box">
+                <img src="imgiron/sw609.jpg" alt="Dry Iron SW 609">
+            </div>
+            <h3>Dry Iron SW 609</h3>
+            <p><strong>Brand:</strong> Kanvox</p>
+            <p><strong>Use:</strong> Dry ironing, Spray function</p>
+
+            <p class="price">Rs. 10,099</p>
+            <p class="installment">Easy monthly installment</p>
+        </div>
+
+        <!-- DRY IRON SW 113 -->
+        <div class="tv-card">
+            <div class="img-box">
+                <img src="imgiron/sw113.jpg" alt="Dry Iron SW 113">
+            </div>
+            <h3>Dry Iron SW 113</h3>
+            <p><strong>Brand:</strong> Kanvox</p>
+            <p><strong>Use:</strong> Dry ironing, Spray function</p>
+
+            <p class="price">Rs. 5,107</p>
+            <p class="installment">Low advance available</p>
+        </div>
+
+        <!-- STEAM IRON -->
+        <div class="tv-card">
+            <div class="img-box">
+                <img src="imgiron/dsw12.jpg" alt="Steam Iron">
+            </div>
+            <h3>Steam Iron</h3>
+            <p><strong>Brand:</strong> Kanvox</p>
+            <p><strong>Use:</strong> Experience ironing comfort</p>
+
+            <p class="price">Rs. 5,107</p>
+            <p class="installment">Pay monthly with easy terms</p>
+        </div>
+
+    </div>
+
+    <a href="../facilities.html" class="btn back-btn">← Back to Facilities</a>
+</section>
+
+<footer>
+    <p>© 2026 Safteey Credit</p>
+</footer>
+
+<!-- SEARCH SCRIPT -->
+<script>
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+        let value = this.value.toLowerCase();
+        let cards = document.querySelectorAll(".tv-card");
+
+        cards.forEach(card => {
+            card.style.display = card.innerText.toLowerCase().includes(value)
+                ? "block"
+                : "none";
+        });
+    });
+</script>
+
+</body>
+</html>

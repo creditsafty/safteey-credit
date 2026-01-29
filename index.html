@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safteey Credit</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Search box style */
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            margin: 20px auto;
+            display: block;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .card {
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="logo-area">
+                <img src="Safty.jpg" style="border-radius: 10%;" alt="Safteey Credit Logo">
+                <h1>Safteey Credit</h1>
+            </div>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="facilities.html">Facilities</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Everything Your Business Needs</h2>
+            <p>TV • Sound Systems • Washing Machines • Kettles</p>
+            <a href="facilities.html" class="btn">View Facilities</a>
+        </div>
+    </section>
+
+    <!-- Services / Facilities -->
+    <section class="services container">
+        <h2>Our Facilities</h2>
+
+        <!-- 🔍 SEARCH BOX -->
+        <input type="text" id="searchInput" class="search-box" placeholder="Search facilities (TV, Fan, Rice Cooker...)">
+
+        <div class="service-grid" id="facilityGrid">
+
+            <a href="products/tv.html" class="card link-card">
+                <h3>📺 Television</h3>
+                <p>Professional display for meetings & presentations</p>
+            </a>
+
+            <a href="products/HyperBoom.html" class="card link-card">
+                <h3>🔊 Hyper Boom</h3>
+                <p>High-power sound system for events</p>
+            </a>
+
+            <a href="products/ElctricKettle.html" class="card link-card">
+                <h3>☕ Electric Kettle</h3>
+                <p>Hot beverages anytime</p>
+            </a>
+
+            <a href="products/fan.html" class="card link-card">
+                <h3>🌀 Fan</h3>
+                <p>Cool comfort anytime</p>
+            </a>
+
+            <a href="products/radio.html" class="card link-card">
+                <h3>📻 Radio</h3>
+                <p>Clear sound anytime</p>
+            </a>
+
+            <a href="products/ricecooker.html" class="card link-card">
+                <h3>🍚 Rice Cooker</h3>
+                <p>Perfect rice every time</p>
+            </a>
+
+            <a href="products/oven.html" class="card link-card">
+                <h3>🔥 Oven</h3>
+                <p>Easy baking & roasting</p>
+            </a>
+
+            <a href="products/mixergrinder.html" class="card link-card">
+                <h3>🌀 Mixer Grinder</h3>
+                <p>Smooth & powerful grinding</p>
+            </a>
+
+            <a href="products/pressurecooker.html" class="card link-card">
+                <h3>🍲 Pressure Cooker</h3>
+                <p>Fast & healthy cooking</p>
+            </a>
+
+            <a href="products/dryiron.html" class="card link-card">
+                <h3>👔 Dry Iron</h3>
+                <p>Quick & wrinkle-free ironing</p>
+            </a>
+
+            
+
+        </div>
+    </section>
+
+    <!-- Contact -->
+   <section id="contact" class="contact container">
+    <h2 style="text-align: center;">Contact Us</h2>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+
+        <!-- PHONE NUMBER (ADDED) -->
+        <input 
+            type="tel" 
+            id="phone" 
+            placeholder="Your Phone Number" 
+            required
+        >
+
+        <!-- EMAIL REMOVED -->
+
+        <textarea id="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <p id="responseMsg"></p>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Safteey Credit. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 🔍 SEARCH SCRIPT -->
+    <script>
+        document.getElementById("searchInput").addEventListener("keyup", function () {
+            let filter = this.value.toLowerCase();
+            let cards = document.querySelectorAll(".service-grid .card");
+
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                card.style.display = text.includes(filter) ? "block" : "none";
+            });
+        });
+
+        
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let message = document.getElementById("message").value;
+
+    let whatsappNumber = "94707411201"; // example: 94771234567
+
+    let whatsappMessage =
+        "📩 *New Customer Enquiry* %0A%0A" +
+        "*Name:* " + name + "%0A" +
+        "*Phone:* " + phone + "%0A" +
+        "*Message:* " + message;
+
+    let whatsappURL =
+        "https://wa.me/" + whatsappNumber + "?text=" + whatsappMessage;
+
+    window.open(whatsappURL, "_blank");
+
+    document.getElementById("responseMsg").innerText =
+        "Opening WhatsApp…";
+
+    document.getElementById("contactForm").reset();
+});
+
+</script>
+
+    
+
+</body>
+</html>
