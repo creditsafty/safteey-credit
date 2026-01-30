@@ -1,74 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oven Facilities</title>
-    <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oven Facilities</title>
 
-    <style>
-        /* Search box */
-        .search-box {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px;
-            margin: 20px auto;
-            display: block;
-            font-size: 16px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
+<style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+}
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
 
-        /* Grid */
-        .tv-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
+/* HEADER */
+.main-header{
+    background:#0a7cff;
+    color:#fff;
+}
+.header-flex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.logo-area img{
+    width:50px;
+    height:50px;
+    border-radius:10px;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:15px;
+    font-weight:bold;
+}
 
-        /* Card */
-        .tv-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 15px;
-            transition: 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+/* SEARCH */
+.search-box{
+    width:100%;
+    max-width:400px;
+    padding:12px;
+    margin:20px auto;
+    display:block;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
 
-        .tv-card:hover {
-            transform: translateY(-5px);
-        }
+/* GRID */
+.item-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
 
-        /* Image */
-        .img-box {
-            width: 100%;
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f7f7f7;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
+/* CARD */
+.item-card{
+    background:#fff;
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+    border:3px solid transparent;
+}
+.item-card.selected{
+    border-color:#0a7cff;
+    background:#eef6ff;
+}
+.item-card img{
+    width:100%;
+    height:180px;
+    object-fit:contain;
+}
 
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+/* PRICE */
+.price{
+    font-size:18px;
+    font-weight:bold;
+    color:#0a7cff;
+}
 
-        /* Price */
-        .price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #0a7cff;
-            margin-top: 8px;
-        }
-    </style>
+/* BUTTON */
+.select-btn{
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:15px;
+    margin-top:10px;
+}
+.select-btn.selected{
+    background:#777;
+}
+
+/* NOTICE */
+.notice{
+    display:none;
+    background:#e8f3ff;
+    border-left:5px solid #0a7cff;
+    padding:15px;
+    margin:30px 0;
+    font-weight:bold;
+}
+
+/* CONTACT */
+#contact{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    margin-top:40px;
+}
+#contactForm{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+#contactForm textarea{
+    grid-column:span 2;
+    min-height:120px;
+}
+#contactForm input,
+#contactForm textarea{
+    padding:12px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+#contactForm button{
+    grid-column:span 2;
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:12px;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+    #contactForm{
+        grid-template-columns:1fr;
+    }
+    #contactForm textarea,
+    #contactForm button{
+        grid-column:span 1;
+    }
+}
+
+/* FOOTER */
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:40px;
+}
+</style>
 </head>
 
 <body>
@@ -76,10 +176,9 @@
 <header class="main-header">
     <div class="container header-flex">
         <div class="logo-area">
-            <img src="../Safty.jpg" style="border-radius: 10px;" alt="Safteey Credit Logo">
+            <img src="../Safty.jpg">
             <h1>Oven Facilities</h1>
         </div>
-
         <nav>
             <a href="../index.html">Home</a>
             <a href="../facilities.html">Facilities</a>
@@ -87,107 +186,135 @@
     </div>
 </header>
 
-<section class="container tv-section">
-    <h2>Available Ovens</h2>
-    <p class="subtitle">Reliable ovens for baking, grilling & daily kitchen use</p>
+<section class="container">
+<h2 style="text-align:center;">Select Your Oven</h2>
 
-    <!-- SEARCH -->
-    <input type="text" id="searchInput" class="search-box"
-        placeholder="Search oven (OTG, 30L, 45L, Kanvox...)">
+<input type="text" class="search-box" placeholder="Search oven..."
+onkeyup="searchItem(this.value)">
 
-    <div class="tv-grid">
+<div class="item-grid">
 
-        <!-- 30L Electric -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imgoven/eoven30L.jpg" alt="Electric Oven 30L">
-            </div>
-            <h3>Electric Oven 30L</h3>
-            <p><strong>Brand:</strong> Kanvox / Camel</p>
-            <p><strong>Capacity:</strong> 30 Liter</p>
-            <p><strong>Use:</strong> Small kitchen / bakery</p>
-            <p class="price">Rs. 25,587</p>
-        </div>
+<div class="item-card">
+<img src="imgoven/eoven30L.jpg">
+<h3>Electric Oven 30L</h3>
+<p>Kanvox / Camel</p>
+<p class="price">Rs. 25,587</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Electric Oven 30L - Rs. 25,587')">Select</button>
+</div>
 
-        <!-- 40L Electric -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imgoven/eoven40L.jpg" alt="Electric Oven 40L">
-            </div>
-            <h3>Electric Oven 40L</h3>
-            <p><strong>Brand:</strong> Kanvox / Camel</p>
-            <p><strong>Capacity:</strong> 40 Liter</p>
-            <p><strong>Use:</strong> Home baking & grilling</p>
-            <p class="price">Rs. 30,451</p>
-        </div>
+<div class="item-card">
+<img src="imgoven/eoven40L.jpg">
+<h3>Electric Oven 40L</h3>
+<p>Kanvox / Camel</p>
+<p class="price">Rs. 30,451</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Electric Oven 40L - Rs. 30,451')">Select</button>
+</div>
 
-        <!-- 50L Electric -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imgoven/eoven50L.jpg" alt="Electric Oven 50L">
-            </div>
-            <h3>Electric Oven 50L</h3>
-            <p><strong>Brand:</strong> Kanvox / Camel</p>
-            <p><strong>Capacity:</strong> 50 Liter</p>
-            <p><strong>Use:</strong> Large family / small bakery</p>
-            <p class="price">Rs. 39,667</p>
-        </div>
+<div class="item-card">
+<img src="imgoven/eoven50L.jpg">
+<h3>Electric Oven 50L</h3>
+<p>Kanvox / Camel</p>
+<p class="price">Rs. 39,667</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Electric Oven 50L - Rs. 39,667')">Select</button>
+</div>
 
-        <!-- 60L Electric -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imgoven/eoven60L.jpg" alt="Electric Oven 60L">
-            </div>
-            <h3>Electric Oven 60L</h3>
-            <p><strong>Brand:</strong> Kanvox / Camel</p>
-            <p><strong>Capacity:</strong> 60 Liter</p>
-            <p><strong>Use:</strong> Hotel / restaurant</p>
-            <p class="price">Rs. 47,347</p>
-        </div>
+<div class="item-card">
+<img src="imgoven/eoven60L.jpg">
+<h3>Electric Oven 60L</h3>
+<p>Kanvox / Camel</p>
+<p class="price">Rs. 47,347</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Electric Oven 60L - Rs. 47,347')">Select</button>
+</div>
 
-        <!-- 20L Microwave -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imgoven/moven20L.jpg" alt="Microwave Oven 20L">
-            </div>
-            <h3>Microwave Oven 20L</h3>
-            <p><strong>Brand:</strong> Kanvox / Camel</p>
-            <p><strong>Capacity:</strong> 20 Liter</p>
-            <p><strong>Use:</strong> Small kitchen</p>
-            <p class="price">Rs. 32,320</p>
-        </div>
+<div class="item-card">
+<img src="imgoven/moven20L.jpg">
+<h3>Microwave Oven 20L</h3>
+<p>Kanvox / Camel</p>
+<p class="price">Rs. 32,320</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Microwave Oven 20L - Rs. 32,320')">Select</button>
+</div>
 
-        <!-- 30L Microwave -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imgoven/moven30L.jpg" alt="Microwave Oven 30L">
-            </div>
-            <h3>Microwave Oven 30L</h3>
-            <p><strong>Brand:</strong> Kanvox / Camel</p>
-            <p><strong>Capacity:</strong> 30 Liter</p>
-            <p><strong>Use:</strong> Home / bakery</p>
-            <p class="price">Rs. 46,067</p>
-        </div>
+<div class="item-card">
+<img src="imgoven/moven30L.jpg">
+<h3>Microwave Oven 30L</h3>
+<p>Kanvox / Camel</p>
+<p class="price">Rs. 46,067</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Microwave Oven 30L - Rs. 46,067')">Select</button>
+</div>
 
-    </div>
+</div>
 
-    <a href="../facilities.html" class="btn back-btn">← Back to Facilities</a>
+<div id="notice" class="notice">
+🔥 Oven selected. Please contact us below.
+</div>
+</section>
+
+<section id="contact" class="container">
+<h2 style="text-align:center;">Contact Us</h2>
+
+<form id="contactForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
+<textarea id="message" placeholder="Selected ovens will appear here" required></textarea>
+<button type="submit">Send WhatsApp</button>
+</form>
 </section>
 
 <footer>
-    <p>© 2026 Safteey Credit</p>
+<p>© 2026 Safteey Credit</p>
 </footer>
 
-<!-- SEARCH SCRIPT -->
 <script>
-    document.getElementById("searchInput").addEventListener("keyup", function () {
-        let value = this.value.toLowerCase();
-        document.querySelectorAll(".tv-card").forEach(card => {
-            card.style.display = card.innerText.toLowerCase().includes(value)
-                ? "block"
-                : "none";
-        });
+let selectedItems=[];
+
+function toggleItem(btn,item){
+    let card = btn.closest(".item-card");
+
+    if(card.classList.contains("selected")){
+        card.classList.remove("selected");
+        btn.classList.remove("selected");
+        btn.innerText="Select";
+        selectedItems = selectedItems.filter(i=>i!==item);
+    }else{
+        card.classList.add("selected");
+        btn.classList.add("selected");
+        btn.innerText="Selected";
+        selectedItems.push(item);
+        document.getElementById("notice").style.display="block";
+        document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+    }
+    updateMessage();
+}
+
+function updateMessage(){
+    let msg="Selected Ovens:\n";
+    selectedItems.forEach(i=>msg+="- "+i+"\n");
+    document.getElementById("message").value=msg;
+}
+
+function searchItem(value){
+    value=value.toLowerCase();
+    document.querySelectorAll(".item-card").forEach(card=>{
+        card.style.display = card.innerText.toLowerCase().includes(value)
+        ? "block" : "none";
     });
+}
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    let url="https://wa.me/94707411201?text="
+    +"🔥 *Oven Enquiry*%0A"
+    +"*Name:* "+name.value+"%0A"
+    +"*Phone:* "+phone.value+"%0A"
+    +"*Items:* "+selectedItems.join(", ");
+    window.open(url,"_blank");
+});
 </script>
 
 </body>
