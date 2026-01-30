@@ -1,207 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV Facilities</title>
-    <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TV Facilities</title>
+<link rel="stylesheet" href="../style.css">
 
-    <style>
-        /* Search box */
-        .search-box {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px 15px;
-            margin: 20px auto;
-            display: block;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
+<style>
+/* SEARCH */
+.search-box{
+    width:100%;
+    max-width:400px;
+    padding:12px;
+    margin:20px auto;
+    display:block;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
 
-        /* TV grid */
-        .tv-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
+/* TV GRID */
+.tv-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
 
-        /* TV card */
-        .tv-card {
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+/* TV CARD */
+.tv-card{
+    background:#fff;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
+    border:3px solid transparent;
+}
 
-        .tv-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
+.tv-card.selected{
+    border-color:#0a7cff;
+    background:#eef6ff;
+}
 
-        .price {
-            font-size: 18px;
-            color: #0a7cff;
-            font-weight: bold;
-            margin-top: 8px;
-        }
+.tv-card img{
+    width:100%;
+    height:180px;
+    object-fit:contain;
+    margin-bottom:10px;
+}
 
-        .subtitle {
-            text-align: center;
-            color: #666;
-        }
+.price{
+    font-weight:bold;
+    color:#0a7cff;
+}
 
-        .back-btn {
-            display: inline-block;
-            margin-top: 30px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+/* NOTICE */
+.notice{
+    display:none;
+    background:#e8f3ff;
+    border-left:5px solid #0a7cff;
+    padding:15px;
+    margin:30px 0;
+    font-weight:bold;
+}
+
+/* CONTACT SECTION */
+#contact{
+    margin-top:60px;
+    background:#f9f9f9;
+    padding:40px 20px;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+#contact h2{
+    font-size:28px;
+    margin-bottom:25px;
+    color:#222;
+    text-align:center;
+}
+
+#contactForm{
+    max-width:520px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#contactForm input,
+#contactForm textarea{
+    width:100%;
+    padding:14px 16px;
+    font-size:16px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    outline:none;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus{
+    border-color:#0a7cff;
+    box-shadow:0 0 0 2px rgba(10,124,255,0.15);
+}
+
+#contactForm textarea{
+    min-height:120px;
+}
+
+#contactForm button{
+    background:#0a7cff;
+    color:#fff;
+    border:none;
+    padding:14px;
+    font-size:17px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#contactForm button:hover{
+    background:#055edb;
+}
+
+@media(max-width:600px){
+    #contact{
+        padding:30px 15px;
+    }
+    #contact h2{
+        font-size:24px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="main-header">
-        <div class="container header-flex">
-            <div class="logo-area">
-                <img src="../Safty.jpg" style="border-radius: 10px;" alt="Safteey Credit Logo">
-                <h1>Television Facilities</h1>
-            </div>
-
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="../facilities.html">Facilities</a>
-            </nav>
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo-area">
+            <img src="../Safty.jpg" style="border-radius:10px;">
+            <h1>Television Facilities</h1>
         </div>
-    </header>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../facilities.html">Facilities</a>
+        </nav>
+    </div>
+</header>
 
-    <!-- TV SECTION -->
-    <section class="container tv-section">
-        <h2 style="text-align:center;">Available Televisions</h2>
-        <p class="subtitle">Different sizes & trusted brands for business use</p>
+<section class="container">
+<h2 style="text-align:center;">Select Your Television</h2>
 
-        <!-- SEARCH BOX -->
-        <input type="text" id="searchBox" class="search-box"
-            placeholder="Search TV (size, brand, use...)"
-            onkeyup="searchTV()">
+<input type="text" class="search-box" placeholder="Search TV..."
+onkeyup="searchTV(this.value)">
 
-        <!-- TV GRID -->
-        <div class="tv-grid">
+<div class="tv-grid">
 
-            <div class="tv-card">
-                <img src="imgtv/kanvox.webp" alt="24 Inch TV">
-                <h3>24 Inch LED TV</h3>
-                <p><strong>Brand:</strong> Kanvox / Monik / Hisense</p>
-                <p><strong>Resolution:</strong> LED</p>
-                <p><strong>Features:</strong> HDMI | USB | PC Input</p>
-                <p><strong>Use:</strong> Small rooms</p>
-                <p class="price">Rs. 43,507</p>
-            </div>
+<div class="tv-card" onclick="toggleItem(this,'24 Inch LED TV - Rs.43,507')">
+<img src="imgtv/kanvox.webp">
+<h3>24 Inch LED TV</h3>
+<p>Small rooms</p>
+<p class="price">Rs. 43,507</p>
+</div>
 
-            <div class="tv-card">
-                <img src="imgtv/kanvox.webp" alt="32 Inch TV">
-                <h3>32 Inch LED TV</h3>
-                <p><strong>Brand:</strong> Kanvox / Monik / Hisense</p>
-                <p><strong>Resolution:</strong> HD</p>
-                <p><strong>Features:</strong> HDMI | USB | PC Input</p>
-                <p><strong>Use:</strong> Small rooms</p>
-                <p class="price">Rs. 44,193</p>
-            </div>
+<div class="tv-card" onclick="toggleItem(this,'32 Inch LED TV - Rs.44,193')">
+<img src="imgtv/kanvox.webp">
+<h3>32 Inch LED TV</h3>
+<p>HD Display</p>
+<p class="price">Rs. 44,193</p>
+</div>
 
-            <!-- <div class="tv-card">
-                <img src="imgtv/kanvox.webp" alt="32 Inch Smart TV">
-                <h3>32 Inch Android Smart TV</h3>
-                <p><strong>Brand:</strong> Kanvox / Monik / Hisense</p>
-                <p><strong>Resolution:</strong> HD</p>
-                <p><strong>Features:</strong> Play Store | Netflix | YouTube</p>
-                <p><strong>Use:</strong> Small rooms</p>
-                <p class="price">Rs. 44,900</p>
-            </div> -->
+<div class="tv-card" onclick="toggleItem(this,'43 Inch LED TV - Rs.111,347')">
+<img src="imgtv/kanvox43.jpg">
+<h3>43 Inch LED TV</h3>
+<p>Conference rooms</p>
+<p class="price">Rs. 111,347</p>
+</div>
 
-            <div class="tv-card">
-                <img src="imgtv/kanvox43.jpg" alt="43 Inch TV">
-                <h3>43 Inch LED TV</h3>
-                <p><strong>Resolution:</strong> Full HD</p>
-                <p><strong>Features:</strong> HDMI | USB</p>
-                <p><strong>Use:</strong> Conference rooms</p>
-                <p class="price">Rs.111,347 </p>
-            </div>
+<div class="tv-card" onclick="toggleItem(this,'43 Inch Smart TV - Rs.122,867')">
+<img src="imgtv/kanvox43.jpg">
+<h3>43 Inch Smart TV</h3>
+<p>Smart Features</p>
+<p class="price">Rs. 122,867</p>
+</div>
 
-            <div class="tv-card">
-                <img src="imgtv/kanvox43.jpg" alt="43 Inch Smart TV">
-                <h3>43 Inch Smart TV</h3>
-                <p><strong>Resolution:</strong> Full HD</p>
-                <p><strong>Features:</strong> Netflix | YouTube</p>
-                <p><strong>Use:</strong> Conference rooms</p>
-                <p class="price">Rs. 122,867</p>
-            </div>
+<div class="tv-card" onclick="toggleItem(this,'55 Inch 4K TV - Rs.223,987')">
+<img src="imgtv/kanvox55.jpg">
+<h3>55 Inch 4K TV</h3>
+<p>Large halls</p>
+<p class="price">Rs. 223,987</p>
+</div>
 
-            <div class="tv-card">
-                <img src="imgtv/kanvox55.jpg" alt="55 Inch TV">
-                <h3>55 Inch 4K TV</h3>
-                <p><strong>Resolution:</strong> 4K UHD</p>
-                <p><strong>Features:</strong> Netflix | YouTube</p>
-                <p><strong>Use:</strong> Large halls</p>
-                <p class="price">Rs. 223,987</p>
-            </div>
+<div class="tv-card" onclick="toggleItem(this,'65 Inch 4K TV - Rs.300,000')">
+<img src="imgtv/kanvox65.jpg">
+<h3>65 Inch 4K TV</h3>
+<p>Large halls</p>
+<p class="price">Rs. 300,000</p>
+</div>
 
-            <div class="tv-card">
-                <img src="imgtv/kanvox65.jpg" alt="65 Inch TV">
-                <h3>65 Inch 4K TV</h3>
-                <p><strong>Resolution:</strong> 4K UHD</p>
-                <p><strong>Use:</strong> Large halls</p>
-                <p class="price">Rs.300,000 </p>
-            </div>
+<div class="tv-card" onclick="toggleItem(this,'75 Inch 4K TV - Rs.486,400')">
+<img src="imgtv/konvex75.webp">
+<h3>75 Inch 4K TV</h3>
+<p>Auditoriums</p>
+<p class="price">Rs. 486,400</p>
+</div>
 
-            <div class="tv-card">
-                <img src="imgtv/konvex75.webp" alt="75 Inch TV">
-                <h3>75 Inch 4K TV</h3>
-                <p><strong>Use:</strong> Auditoriums</p>
-                <p class="price">Rs. 486,400</p>
-            </div>
+<div class="tv-card" onclick="toggleItem(this,'85 Inch 4K TV - Rs.704,000')">
+<img src="imgtv/konvex85.jpg">
+<h3>85 Inch 4K TV</h3>
+<p>Auditoriums</p>
+<p class="price">Rs. 704,000</p>
+</div>
 
-            <div class="tv-card">
-                <img src="imgtv/konvex 85.jpg" alt="85 Inch TV">
-                <h3>85 Inch 4K TV</h3>
-                <p><strong>Use:</strong> Auditoriums</p>
-                <p class="price">Rs. 704,000</p>
-            </div>
+<div class="tv-card" onclick="toggleItem(this,'100 Inch 4K TV - Rs.1,279,897')">
+<img src="imgtv/konvex100.webp">
+<h3>100 Inch 4K TV</h3>
+<p>Large presentations</p>
+<p class="price">Rs. 1,279,897</p>
+</div>
 
-            <div class="tv-card">
-                <img src="imgtv/konvex100.webp" alt="100 Inch TV">
-                <h3>100 Inch 4K TV</h3>
-                <p><strong>Use:</strong> Large presentations</p>
-                <p class="price">Rs. 1,279,897</p>
-            </div>
+</div>
 
-        </div>
+<div id="notice" class="notice">
+✅ TV selected. Please scroll down to <b>Contact Us</b> and send your enquiry.
+</div>
 
-        <a href="../facilities.html" class="btn back-btn">← Back to Facilities</a>
-    </section>
+</section>
 
-    <footer>
-        <p>© 2026 Safteey Credit</p>
-    </footer>
+<section id="contact" class="container">
+<h2>Contact Us</h2>
 
-    <!-- SEARCH SCRIPT -->
-    <script>
-        function searchTV() {
-            let input = document.getElementById("searchBox").value.toLowerCase();
-            let cards = document.querySelectorAll(".tv-card");
+<form id="contactForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
+<textarea id="message" placeholder="Selected TVs will appear here" required></textarea>
+<button type="submit">Send WhatsApp</button>
+</form>
+</section>
 
-            cards.forEach(card => {
-                let text = card.innerText.toLowerCase();
-                card.style.display = text.includes(input) ? "block" : "none";
-            });
-        }
-    </script>
+<footer>
+<p>© 2026 Safteey Credit</p>
+</footer>
+
+<script>
+let selectedItems=[];
+
+function toggleItem(card,item){
+    if(card.classList.contains("selected")){
+        card.classList.remove("selected");
+        selectedItems = selectedItems.filter(i=>i!==item);
+    }else{
+        card.classList.add("selected");
+        selectedItems.push(item);
+        document.getElementById("notice").style.display="block";
+        document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+    }
+    updateMessage();
+}
+
+function updateMessage(){
+    let msg="Selected TVs:\n";
+    selectedItems.forEach(i=>msg+="- "+i+"\n");
+    document.getElementById("message").value=msg;
+}
+
+function searchTV(value){
+    value=value.toLowerCase();
+    document.querySelectorAll(".tv-card").forEach(card=>{
+        card.style.display=card.innerText.toLowerCase().includes(value)
+        ?"block":"none";
+    });
+}
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    let url="https://wa.me/94707411201?text="
+    +"📺 *TV Enquiry*%0A"
+    +"*Name:* "+name.value+"%0A"
+    +"*Phone:* "+phone.value+"%0A"
+    +"*Items:* "+selectedItems.join(", ");
+    window.open(url,"_blank");
+});
+</script>
 
 </body>
 </html>
