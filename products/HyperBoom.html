@@ -1,206 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyper Boom Facilities</title>
-    <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyper Boom Facilities</title>
 
-    <style>
-        /* Search box */
-        .search-box {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px;
-            margin: 20px auto;
-            display: block;
-            font-size: 16px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
+<style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+}
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+h1,h2{margin:10px 0}
 
-        /* Card */
-        .tv-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 15px;
-            transition: 0.3s ease;
-        }
+/* HEADER */
+.main-header{
+    background:#0a7cff;
+    color:white;
+}
+.header-flex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.logo-area img{
+    width:50px;
+    height:50px;
+    border-radius:8px;
+}
+nav a{
+    color:white;
+    margin-left:15px;
+    text-decoration:none;
+    font-weight:bold;
+}
 
-        .tv-card:hover {
-            transform: translateY(-5px);
-        }
+/* SEARCH */
+.search-box{
+    width:100%;
+    max-width:400px;
+    padding:12px;
+    margin:20px auto;
+    display:block;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
 
-        /* Image box */
-        .img-box {
-            width: 100%;
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f7f7f7;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
+/* GRID */
+.item-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.item-card{
+    background:#fff;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    text-align:center;
+    transition:.3s;
+    border:3px solid transparent;
+}
+.item-card.selected{
+    border-color:#0a7cff;
+    background:#eef6ff;
+}
+.item-card img{
+    width:100%;
+    height:180px;
+    object-fit:contain;
+    margin-bottom:10px;
+}
+.price{
+    font-weight:bold;
+    color:#0a7cff;
+    font-size:18px;
+}
 
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+/* BUTTON */
+.select-btn{
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:15px;
+    margin-top:10px;
+}
+.select-btn.selected{
+    background:#777;
+}
 
-        /* Price styles */
-        .price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1e7e34;
-            margin-top: 8px;
-        }
+/* NOTICE */
+.notice{
+    display:none;
+    background:#e8f3ff;
+    border-left:5px solid #0a7cff;
+    padding:15px;
+    margin:30px 0;
+    font-weight:bold;
+}
 
-        .installment {
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
+/* CONTACT */
+#contact{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    margin-top:30px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+#contactForm{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+#contactForm textarea{
+    grid-column:span 2;
+    min-height:120px;
+}
+#contactForm input,
+#contactForm textarea{
+    padding:12px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+#contactForm button{
+    grid-column:span 2;
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:12px;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    #contactForm{grid-template-columns:1fr}
+    #contactForm textarea,
+    #contactForm button{grid-column:span 1}
+}
+</style>
 </head>
 
 <body>
 
 <header class="main-header">
-    <div class="container header-flex">
-        <div class="logo-area">
-            <img src="../Safty.jpg" style="border-radius: 10px;" alt="Safteey Credit Logo">
-            <h1>Hyper Boom Facilities</h1>
-        </div>
-
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="../facilities.html">Facilities</a>
-        </nav>
-    </div>
+<div class="container header-flex">
+<div class="logo-area">
+<img src="../Safty.jpg">
+<h1>Hyper Boom Facilities</h1>
+</div>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../facilities.html">Facilities</a>
+</nav>
+</div>
 </header>
 
-<section class="container tv-section">
-    <h2>Available Hyper Boom Speakers</h2>
-    <p class="subtitle">Powerful sound systems for meetings, events & presentations</p>
+<section class="container">
+<h2 style="text-align:center">Select Hyper Boom Speakers</h2>
 
-    <!-- SEARCH -->
-    <input type="text" id="searchInput" class="search-box"
-        placeholder="Search speaker (20, 320, JBL, 40W, 80W, price...)">
+<input type="text" class="search-box" placeholder="Search speaker..."
+onkeyup="searchItem(this.value)">
 
-    <div class="tv-grid">
+<div class="item-grid">
 
-        <!-- 20 -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imghy/hyperboom20.jpg" alt="Hyper Boom Speaker 20">
-            </div>
-            <h3>Hyper Boom Speaker 20</h3>
-            <p><strong>Brand:</strong> Kanvox / Monik / Hisense</p>
-            <p><strong>Power:</strong> 40W</p>
-            <p><strong>Use:</strong> Events & halls</p>
+<div class="item-card">
+<img src="imghy/hyperboom20.jpg">
+<h3>Hyper Boom Speaker 20</h3>
+<p>40W – Events & halls</p>
+<p class="price">Rs. 34,547</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Hyper Boom Speaker 20 - Rs. 34,547')">Select</button>
+</div>
 
-            <p class="price">Rs. 34,547</p>
-            <p class="installment">Easy installment available</p>
-        </div>
+<div class="item-card">
+<img src="imghy/hyperboom230.jpeg">
+<h3>Hyper Boom Speaker 110</h3>
+<p>40W – Seminars</p>
+<p class="price">Rs. 47,347</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Hyper Boom Speaker 110 - Rs. 47,347')">Select</button>
+</div>
 
-        <!-- 110 -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imghy/hyperboom230.jpeg" alt="Hyper Boom Speaker 110">
-            </div>
-            <h3>Hyper Boom Speaker 110</h3>
-            <p><strong>Power:</strong> 40W</p>
-            <p><strong>Use:</strong> Seminars</p>
+<div class="item-card">
+<img src="imghy/hyperboom320.jpeg">
+<h3>Hyper Boom Speaker 320</h3>
+<p>60W – Meetings</p>
+<p class="price">Rs. 63,987</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Hyper Boom Speaker 320 - Rs. 63,987')">Select</button>
+</div>
 
-            <p class="price">Rs. 47,347</p>
-            <p class="installment">Low advance • Monthly installment</p>
-        </div>
+<div class="item-card">
+<img src="imghy/hyperboom350.jpeg">
+<h3>Hyper Boom Speaker 350X</h3>
+<p>80W – Large events</p>
+<p class="price">Rs. 72,947</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Hyper Boom Speaker 350X - Rs. 72,947')">Select</button>
+</div>
 
-        <!-- 120 -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imghy/hyperboom230.jpeg" alt="Hyper Boom Speaker 120">
-            </div>
-            <h3>Hyper Boom Speaker 120</h3>
-            <p><strong>Power:</strong> 40W</p>
-            <p><strong>Use:</strong> Seminars</p>
+<div class="item-card">
+<img src="imghy/JBL 120.webp">
+<h3>JBL Party Box 120</h3>
+<p>1200W – Premium sound</p>
+<p class="price">Rs. 103,500</p>
+<button class="select-btn"
+onclick="toggleItem(this,'JBL Party Box 120 - Rs. 103,500')">Select</button>
+</div>
 
-            <p class="price">Rs. 51,187</p>
-            <p class="installment">Installment up to 12 months</p>
-        </div>
+</div>
 
-        <!-- 320 -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imghy/hyperboom320.jpeg" alt="Hyper Boom Speaker 320">
-            </div>
-            <h3>Hyper Boom Speaker 320</h3>
-            <p><strong>Power:</strong> 60W</p>
+<div id="notice" class="notice">
+🔊 Hyper Boom Speaker selected. Please contact us below.
+</div>
+</section>
 
-            <p class="price">Rs. 63,987</p>
-            <p class="installment">Best for meetings & events</p>
-        </div>
+<section id="contact" class="container">
+<h2 style="text-align:center">Contact Us</h2>
 
-        <!-- 350X -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imghy/hyperboom350.jpeg" alt="Hyper Boom Speaker 350X">
-            </div>
-            <h3>Hyper Boom Speaker 350X</h3>
-            <p><strong>Power:</strong> 80W</p>
-
-            <p class="price">Rs. 72,947</p>
-            <p class="installment">Flexible payment plans</p>
-        </div>
-
-        <!-- 400 -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imghy/HyperBoom400.jpeg" alt="Hyper Boom Speaker 400">
-            </div>
-            <h3>Hyper Boom Speaker 400</h3>
-            <p><strong>Power:</strong> 80W</p>
-
-            <p class="price">Rs. 72947</p>
-            <p class="installment">Ideal for large halls</p>
-        </div>
-
-        <!-- JBL -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imghy/JBL 120.webp" alt="JBL Party Box 120">
-            </div>
-            <h3>JBL Party Box 120</h3>
-            <p><strong>Power:</strong> 1200W</p>
-
-            <p class="price">Rs. 103500</p>
-            <p class="installment">Premium sound • Installment available</p>
-        </div>
-
-    </div>
-
-    <a href="../facilities.html" class="btn back-btn">← Back to Facilities</a>
+<form id="contactForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
+<textarea id="message" placeholder="Selected items will appear here" required></textarea>
+<button type="submit">Send WhatsApp</button>
+</form>
 </section>
 
 <footer>
-    <p>© 2026 Safteey Credit</p>
+© 2026 Safteey Credit
 </footer>
 
-<!-- SEARCH SCRIPT -->
 <script>
-    document.getElementById("searchInput").addEventListener("keyup", function () {
-        let value = this.value.toLowerCase();
-        let cards = document.querySelectorAll(".tv-card");
+let selectedItems=[];
 
-        cards.forEach(card => {
-            card.style.display = card.innerText.toLowerCase().includes(value)
-                ? "block"
-                : "none";
-        });
+function toggleItem(btn,item){
+    let card=btn.closest(".item-card");
+
+    if(card.classList.contains("selected")){
+        card.classList.remove("selected");
+        btn.classList.remove("selected");
+        btn.innerText="Select";
+        selectedItems=selectedItems.filter(i=>i!==item);
+    }else{
+        card.classList.add("selected");
+        btn.classList.add("selected");
+        btn.innerText="Selected";
+        selectedItems.push(item);
+        document.getElementById("notice").style.display="block";
+        document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+    }
+    updateMessage();
+}
+
+function updateMessage(){
+    let msg="Selected Hyper Boom Speakers:\n";
+    selectedItems.forEach(i=>msg+="- "+i+"\n");
+    document.getElementById("message").value=msg;
+}
+
+function searchItem(value){
+    value=value.toLowerCase();
+    document.querySelectorAll(".item-card").forEach(card=>{
+        card.style.display=card.innerText.toLowerCase().includes(value)
+        ?"block":"none";
     });
+}
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    let url="https://wa.me/94707411201?text="
+    +"🔊 *Hyper Boom Enquiry*%0A"
+    +"*Name:* "+name.value+"%0A"
+    +"*Phone:* "+phone.value+"%0A"
+    +"*Items:* "+selectedItems.join(", ");
+    window.open(url,"_blank");
+});
 </script>
 
 </body>
