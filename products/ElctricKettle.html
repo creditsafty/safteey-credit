@@ -1,145 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electric Kettle Facilities</title>
-    <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electric Kettle Facilities</title>
+<link rel="stylesheet" href="../style.css">
 
-    <style>
-        /* Search box */
-        .search-box {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px;
-            margin: 20px auto;
-            display: block;
-            font-size: 16px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
+<style>
+.search-box{
+    width:100%;
+    max-width:400px;
+    padding:12px;
+    margin:20px auto;
+    display:block;
+    font-size:16px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
 
-        /* Card */
-        .tv-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 15px;
-            transition: 0.3s ease;
-        }
+/* CARD */
+.tv-card{
+    background:#fff;
+    border-radius:12px;
+    padding:15px;
+    transition:.3s;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    border:3px solid transparent;
+}
+.tv-card.selected{
+    border-color:#0a7cff;
+    background:#eef6ff;
+}
+.tv-card:hover{
+    transform:translateY(-5px);
+}
 
-        .tv-card:hover {
-            transform: translateY(-5px);
-        }
+/* IMAGE */
+.img-box{
+    width:100%;
+    height:220px;
+    background:#f7f7f7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    margin-bottom:10px;
+}
+.img-box img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
 
-        /* Image container */
-        .img-box {
-            width: 100%;
-            height: 220px;
-            background: #f7f7f7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
+/* PRICE */
+.price{
+    font-size:18px;
+    font-weight:bold;
+    color:#1e7e34;
+}
+.installment{
+    font-size:14px;
+    color:#555;
+}
 
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+/* SELECT BUTTON */
+.select-btn{
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    background:#25D366;
+    color:#fff;
+    font-size:15px;
+    cursor:pointer;
+}
+.select-btn.selected{
+    background:#777;
+}
 
-        /* Price styles */
-        .price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1e7e34;
-            margin-top: 8px;
-        }
+/* NOTICE */
+.notice{
+    display:none;
+    background:#e8f3ff;
+    border-left:5px solid #0a7cff;
+    padding:15px;
+    margin:30px 0;
+    font-weight:bold;
+}
 
-        .installment {
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
+/* CONTACT */
+#contact{
+    display:none;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+#contactForm{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+#contactForm input,
+#contactForm textarea{
+    padding:12px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+#contactForm textarea{
+    grid-column:span 2;
+    min-height:120px;
+}
+#contactForm button{
+    grid-column:span 2;
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:12px;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+@media(max-width:600px){
+    #contactForm{grid-template-columns:1fr}
+    #contactForm textarea,
+    #contactForm button{grid-column:span 1}
+}
+</style>
 </head>
 
 <body>
 
 <header class="main-header">
-    <div class="container header-flex">
-        <div class="logo-area">
-            <img src="../Safty.jpg" style="border-radius: 10px;" alt="Safteey Credit Logo">
-            <h1>Electric Kettle Facilities</h1>
-        </div>
-
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="../facilities.html">Facilities</a>
-        </nav>
-    </div>
+<div class="container header-flex">
+<div class="logo-area">
+<img src="../Safty.jpg" style="border-radius:10px">
+<h1>Electric Kettle Facilities</h1>
+</div>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../facilities.html">Facilities</a>
+</nav>
+</div>
 </header>
 
 <section class="container tv-section">
-    <h2>Available Electric Kettles</h2>
-    <p class="subtitle">Quick & convenient hot water for office and staff use</p>
+<h2>Available Electric Kettles</h2>
+<p class="subtitle">Quick & convenient hot water solutions</p>
 
-    <!-- 🔍 SEARCH BOX -->
-    <input type="text" id="searchInput" class="search-box"
-           placeholder="Search kettle (steel, 1500W, Kanvox...)">
+<input type="text" id="searchInput" class="search-box"
+placeholder="Search kettle (1.8L, 1500W, steel...)">
 
-    <div class="tv-grid">
+<div class="tv-grid">
 
-        <!-- 1.5 LITER -->
-        <div class="tv-card">
-            <div class="img-box">
-                <img src="imgket/kettle.png" alt="1.5L Electric Kettle">
-            </div>
-            <h3>Electric Kettle 1.8L</h3>
-            <p><strong>Brand:</strong> Kanvox / Kanrich</p>
-            <p><strong>Power:</strong> 1500W</p>
-            <p><strong>Use:</strong> Small office pantry</p>
+<!-- KETTLE 1 -->
+<div class="tv-card">
+<div class="img-box">
+<img src="imgket/kettle.png" alt="Electric Kettle 1.8L">
+</div>
+<h3>Electric Kettle 1.8L</h3>
+<p><strong>Brand:</strong> Kanvox / Kanrich</p>
+<p><strong>Power:</strong> 1500W</p>
+<p><strong>Use:</strong> Office pantry</p>
+<p class="price">Rs. 4,160</p>
+<p class="installment">Easy monthly installment</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Electric Kettle 1.8L - Rs. 4,160')">Select</button>
+</div>
 
-            <p class="price">Rs. 4,160</p>
-            <p class="installment">Easy monthly installment</p>
-        </div>
+<!-- KETTLE 2 -->
+<div class="tv-card">
+<div class="img-box">
+<img src="imgket/steelket.jpg" alt="Steel Electric Kettle">
+</div>
+<h3>Steel Electric Kettle</h3>
+<p><strong>Power:</strong> 1800W</p>
+<p><strong>Use:</strong> Staff rooms</p>
+<p class="price">Rs. 5,890</p>
+<p class="installment">Low advance available</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Steel Electric Kettle - Rs. 5,890')">Select</button>
+</div>
 
-        <!-- 1.8 LITER -->
-        <!-- <div class="tv-card">
-            <div class="img-box">
-                <img src="imgket/steelket.jpg" alt="1.8L Stainless Steel Electric Kettle">
-            </div>
-            <h3>Stainless Steel Electric Kettle 1.8L</h3>
-            <p><strong>Brand:</strong> Kanvox / Kanrich</p>
-            <p><strong>Power:</strong> 1100W</p>
-            <p><strong>Use:</strong> Medium staff usage</p>
+<!-- KETTLE 3 -->
+<div class="tv-card">
+<div class="img-box">
+<img src="imgket/steelket.jpg" alt="Glass Electric Kettle">
+</div>
+<h3>Glass Electric Kettle</h3>
+<p><strong>Power:</strong> 2000W</p>
+<p><strong>Use:</strong> Home & office</p>
+<p class="price">Rs. 7,450</p>
+<p class="installment">Premium model</p>
+<button class="select-btn"
+onclick="toggleItem(this,'Glass Electric Kettle - Rs. 7,450')">Select</button>
+</div>
 
-            <p class="price">Rs. 7,950</p>
-            <p class="installment">Low advance available</p>
-        </div> -->
+</div>
 
-    </div>
+<div id="notice" class="notice">
+☕ Kettle selected! Please contact us below.
+</div>
 
-    <a href="../facilities.html" class="btn back-btn">← Back to Facilities</a>
+<section id="contact">
+<h2>Contact Us</h2>
+<form id="contactForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
+<textarea id="message" required></textarea>
+<button type="submit">Send via WhatsApp</button>
+</form>
+</section>
+
+<a href="../facilities.html" class="btn back-btn">← Back to Facilities</a>
 </section>
 
 <footer>
-    <p>© 2026 Safteey Credit</p>
+<p>© 2026 Safteey Credit</p>
 </footer>
 
-<!-- 🔍 SEARCH SCRIPT -->
 <script>
-    document.getElementById("searchInput").addEventListener("keyup", function () {
-        let value = this.value.toLowerCase();
-        let cards = document.querySelectorAll(".tv-card");
+let selectedItems=[];
 
-        cards.forEach(card => {
-            card.style.display = card.innerText.toLowerCase().includes(value)
-                ? "block"
-                : "none";
-        });
+function toggleItem(btn,item){
+    let card=btn.closest(".tv-card");
+
+    if(card.classList.contains("selected")){
+        card.classList.remove("selected");
+        btn.classList.remove("selected");
+        btn.innerText="Select";
+        selectedItems=selectedItems.filter(i=>i!==item);
+    }else{
+        card.classList.add("selected");
+        btn.classList.add("selected");
+        btn.innerText="Selected";
+        selectedItems.push(item);
+        document.getElementById("notice").style.display="block";
+        document.getElementById("contact").style.display="block";
+        document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+    }
+    updateMessage();
+}
+
+function updateMessage(){
+    let msg="Selected Electric Kettles:\n";
+    selectedItems.forEach(i=>msg+="- "+i+"\n");
+    document.getElementById("message").value=msg;
+}
+
+document.getElementById("searchInput").addEventListener("keyup",function(){
+    let v=this.value.toLowerCase();
+    document.querySelectorAll(".tv-card").forEach(card=>{
+        card.style.display=card.innerText.toLowerCase().includes(v)
+        ?"block":"none";
     });
+});
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    let url="https://wa.me/94707411201?text="
+    +"☕ *Electric Kettle Enquiry*%0A"
+    +"Name: "+name.value+"%0A"
+    +"Phone: "+phone.value+"%0A"
+    +"Items:%0A"+selectedItems.join("%0A");
+    window.open(url,"_blank");
+});
 </script>
 
 </body>
